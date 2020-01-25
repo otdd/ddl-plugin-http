@@ -79,11 +79,16 @@ public class HttpDDLDecoder implements DDLDecoder {
 					header.get(dst);
 					String[] tmp = new String(dst).split("\n");
 					sb.append(name+"\n"+tmp[0].trim()+"\n\n");
-					sb.append("[header]\n");
-					for(int i=1;i<tmp.length;i++){
-						if(tmp[i].trim().length()>0){
-							sb.append(tmp[i].trim()+"\n");
+
+					StringBuilder headerSB = new StringBuilder();
+					for (int i = 1; i < tmp.length; i++) {
+						if (tmp[i].trim().length() > 0) {
+							headerSB.append(tmp[i].trim() + "\n");
 						}
+					}
+					if(headerSB.length()>0){
+						sb.append("[header]\n");
+						sb.append(headerSB);
 					}
 				}
 

@@ -149,7 +149,11 @@ public class HttpDecoder {
                 	BODY_REMAINING_BYTES = msg.remaining();
                 	state = State.BODY_WITH_CONTENT_LENGTH;
 				} else {
-					LOG.error("no content length !");
+					LOG.info("no content length !");
+					consume(ConsumeType.DISCARD,msg,msg.remaining());
+					state = State.NEW;
+					BODY_REMAINING_BYTES = 0;
+					return true;
 				}
 			}
 			break;
