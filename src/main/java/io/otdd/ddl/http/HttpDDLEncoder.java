@@ -63,8 +63,11 @@ public class HttpDDLEncoder implements DDLEncoder {
 		if(statusLine.length()==0){
 			return null;
 		}
-		
-		headers.add("Content-Length: "+body.toString().trim().getBytes(StandardCharsets.UTF_8).length);
+
+		int len = body.toString().trim().getBytes(StandardCharsets.UTF_8).length;
+		if(len>0) {
+			headers.add("Content-Length: " + body.toString().trim().getBytes(StandardCharsets.UTF_8).length);
+		}
 		
 		StringBuilder resp = new StringBuilder();
 		resp.append(statusLine+"\r\n");
