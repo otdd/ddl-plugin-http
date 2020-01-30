@@ -46,6 +46,10 @@ public class HttpDDLCodecFactoryPlugin extends Plugin {
 			return "http";
 		}
 
+		public String getPluginVersion() {
+			return "0.1.0";
+		}
+
 		public boolean init(Map<String,String> reqProtocolSettings,
 				Map<String,String> respProtocolSettings) {
 			return true;
