@@ -130,7 +130,7 @@ public class HttpDecoder {
 				// no request decoded, we accumulate
 				state = State.HEAD;
 			} else {
-				LOG.debug("response with content");
+				LOG.debug("decoding content.");
 				String contentLen = httpMessage.getHeader("content-length");
 				if (contentLen != null) {
 					LOG.debug("found content len : {}", contentLen);
@@ -149,7 +149,7 @@ public class HttpDecoder {
                 	BODY_REMAINING_BYTES = msg.remaining();
                 	state = State.BODY_WITH_CONTENT_LENGTH;
 				} else {
-					LOG.info("no content length !");
+					LOG.debug("no content length.");
 					consume(ConsumeType.DISCARD,msg,msg.remaining());
 					state = State.NEW;
 					BODY_REMAINING_BYTES = 0;
