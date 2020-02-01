@@ -43,7 +43,7 @@ public class HttpDDLCodecFactoryPlugin extends Plugin {
 		}
 		
 		public String getPluginName() {
-			return "http";
+			return "otdd official http plugin";
 		}
 
 		public String getPluginVersion() {
